@@ -1,4 +1,5 @@
 # Lit Ipsum
+[![Gem Version](https://badge.fury.io/rb/lit_ipsum.svg)](https://badge.fury.io/rb/lit_ipsum)
 
 This gem offers filler text from classical works of literature in place of standard "lorem ipsum" text. This can be useful for adding filler text for mockups and screenshots for new projects.
 
