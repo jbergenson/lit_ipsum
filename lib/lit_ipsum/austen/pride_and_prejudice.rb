@@ -3,7 +3,7 @@
 module LitIpsum
   class Austen
     class PrideAndPrejudice < Base
-      FILENAME = 'texts/austen/pride-and-prejudice.txt'
+      FILENAME = 'lib/texts/austen/pride-and-prejudice.txt'
 
       class << self
         def sentences(count, max_sentence = 0, filename = FILENAME)
