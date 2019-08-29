@@ -4,7 +4,7 @@ module LitIpsum
   class Poe
     class Raven < Base
       FILENAME = File.join(File.dirname(File.expand_path(__FILE__)), '../../texts/poe/the-raven.txt')
-  
+
       class << self
         def sentences(count, max_sentence: 0, filename: FILENAME, repeats: nil)
           super(count, repeats: repeats, max_sentence: max_sentence, filename: filename)
@@ -16,4 +16,6 @@ module LitIpsum
       end
     end
   end
+  # Shorthand Alias
+  Raven = Poe::Raven
 end

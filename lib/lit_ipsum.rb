@@ -26,7 +26,7 @@ module LitIpsum
 
         obj = []
         phrases = []
-        
+
         count.times do
           sentence = source.sample
           obj << sentence
@@ -49,7 +49,7 @@ module LitIpsum
           obj << source.select { |sentence| sentence.scan(/\w+/).size <= count - obj.map { |el| el.scan(/\w+/) }.flatten.length }.sample
           break if obj.map { |el| el.scan(/\w+/) }.flatten.length == count
         end
-        
+
         phrases = []
 
         if !repeats.nil?

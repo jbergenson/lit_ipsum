@@ -14,7 +14,7 @@ RSpec.describe LitIpsum::Austen::PrideAndPrejudice do
     it 'generates litsum with correct amount of sentences' do
       3.times do
         rand = (1..12).to_a.sample
-        expect(LitIpsum::Austen::PrideAndPrejudice.sentences(rand, repeats: rand).scan(LitIpsum::SENTENCE_PATTERN).size).to eq(rand*rand)
+        expect(LitIpsum::Austen::PrideAndPrejudice.sentences(rand, repeats: rand).scan(LitIpsum::SENTENCE_PATTERN).size).to eq(rand * rand)
       end
     end
 
@@ -49,7 +49,7 @@ RSpec.describe LitIpsum::Austen::PrideAndPrejudice do
     it 'includes only sentences under or equal to maximum size limit' do
       3.times do
         rand = (1..12).to_a.sample
-        expect(LitIpsum::Austen::PrideAndPrejudice.sentences(rand,max_sentence: 5).scan(LitIpsum::SENTENCE_PATTERN).map(&:size).max).to be <= 5
+        expect(LitIpsum::Austen::PrideAndPrejudice.sentences(rand, max_sentence: 5).scan(LitIpsum::SENTENCE_PATTERN).map(&:size).max).to be <= 5
       end
     end
 

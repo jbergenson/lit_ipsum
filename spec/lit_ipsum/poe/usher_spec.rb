@@ -14,7 +14,7 @@ RSpec.describe LitIpsum::Poe::Usher do
     it 'generates litsum with correct amount of sentences' do
       3.times do
         rand = (1..12).to_a.sample
-        expect(LitIpsum::Poe::Usher.sentences(rand, repeats: rand).scan(LitIpsum::SENTENCE_PATTERN).size).to eq(rand*rand)
+        expect(LitIpsum::Poe::Usher.sentences(rand, repeats: rand).scan(LitIpsum::SENTENCE_PATTERN).size).to eq(rand * rand)
       end
     end
 
