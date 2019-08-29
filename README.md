@@ -25,6 +25,9 @@ And then require the gem whereever you plan to use it.
 require 'lit_ipsum'
 
 LitIpsum::Austen::PrideAndPrejudice.sentences(3) #=> "Other schemes, too, came into her head. As often as I can. I cannot think so very ill of Wickham."
+
+# Shorthand of the above
+LitIpsum::PrideAndPrejudice.sentences(3) #=> "Other schemes, too, came into her head. As often as I can. I cannot think so very ill of Wickham."
 LitIpsum::Austen::PrideAndPrejudice.words(7)     #=> "Indeed, Jane, you ought to believe me."
 
 LitIpsum::Doyle::SherlockHolmes.sentences(2)     #=> "And how in the world did you find them? It is half-past ten now."
