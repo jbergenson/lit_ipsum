@@ -2,18 +2,21 @@
 
 module LitIpsum
   class Carroll
+    # Lewis Carroll's Alice's Adventures in Wonderland
     class AliceInWonderland < Base
-      FILENAME = File.join(File.dirname(File.expand_path(__FILE__)), '../../texts/carroll/alice-in-wonderland.txt')
+      FILENAME = full_filename('texts/carroll/alice-in-wonderland.txt')
 
       class << self
-        def sentences(count, max_sentence: 0, filename: FILENAME, repeats: nil)
-          super(count, repeats: repeats, max_sentence: max_sentence, filename: filename)
+        def sentences(count, max_sentence: 0, repeats: nil)
+          super(count, repeats: repeats, max_sentence: max_sentence, filename: FILENAME)
         end
 
-        def words(count, filename: FILENAME, repeats: nil)
-          super(count, repeats: repeats, filename: filename)
+        def words(count, repeats: nil)
+          super(count, repeats: repeats, filename: FILENAME)
         end
       end
     end
   end
+  # Shorthand Alias
+  AliceInWonderland = Carroll::AliceInWonderland
 end

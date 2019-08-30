@@ -3,8 +3,9 @@
 require 'lit_ipsum/version'
 
 module LitIpsum
-  SENTENCE_PATTERN = /(?=“*)[A-Z]+.{1,}?[\.\!\?](?=”*\s*)(?<!Mr.|Mrs.|Ms.|Dr.|St.|S.A.)/.freeze
+  SENTENCE_PATTERN = /(?=“*)[A-Z]+.{1,}?[\.\!\?](?=”*\s*)(?<!Mr.|Mrs.|Ms.|Dr.|St.|S.A.)/
 
+  # Generic error class that can be raised when an exception is expected
   class Error < StandardError; end
 
   class Base
@@ -25,41 +26,37 @@ module LitIpsum
         raise Error, "Unable to find sentences of length <= #{max_sentence}." if source.empty?
 
         obj = []
-        phrases = []
-        
-        count.times do
-          sentence = source.sample
-          obj << sentence
-        end
+        count.times { obj << source.sample }
 
-        if !repeats.nil?
-          repeats.times do
-            phrases << obj.join(' ')
-          end
-          phrases.join("\n")
-        else
-          obj.join(' ')
-        end
+        repeat(repeats, obj)
       end
 
       def words(count, filename:, repeats:)
         source = get_text(filename).select { |sentence| sentence.scan(/\w+/).size <= count }
         obj = []
         loop do
-          obj << source.select { |sentence| sentence.scan(/\w+/).size <= count - obj.map { |el| el.scan(/\w+/) }.flatten.length }.sample
-          break if obj.map { |el| el.scan(/\w+/) }.flatten.length == count
+          length_in_words = obj.map { |el| el.scan(/\w+/) }.flatten.length
+          obj << source.select { |sentence| sentence.scan(/\w+/).size <= count - length_in_words }.sample
+          break if length_in_words == count
         end
-        
-        phrases = []
 
+        repeat(repeats, obj)
+      end
+
+      private
+
+      def repeat(repeats, obj)
+        phrases = []
         if !repeats.nil?
-          repeats.times do
-            phrases << obj.join(' ')
-          end
+          repeats.times { phrases << obj.join(' ') }
           phrases.join("\n")
         else
           obj.join(' ')
         end
+      end
+
+      def full_filename(txt)
+        File.join(File.dirname(File.expand_path(__FILE__)), txt)
       end
     end
   end

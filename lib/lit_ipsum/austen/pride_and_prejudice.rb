@@ -2,18 +2,21 @@
 
 module LitIpsum
   class Austen
+    # Jane Austen's Pride and Prejudice
     class PrideAndPrejudice < Base
-      FILENAME = File.join(File.dirname(File.expand_path(__FILE__)), '../../texts/austen/pride-and-prejudice.txt')
+      FILENAME = full_filename('texts/austen/pride-and-prejudice.txt')
 
       class << self
-        def sentences(count, max_sentence: 0, filename: FILENAME, repeats: nil)
-          super(count, repeats: repeats, max_sentence: max_sentence, filename: filename)
+        def sentences(count, max_sentence: 0, repeats: nil)
+          super(count, repeats: repeats, max_sentence: max_sentence, filename: FILENAME)
         end
 
-        def words(count, filename: FILENAME, repeats: nil)
-          super(count, repeats: repeats, filename: filename)
+        def words(count, repeats: nil)
+          super(count, repeats: repeats, filename: FILENAME)
         end
       end
     end
   end
+  # Shorthand Alias
+  PrideAndPrejudice = Austen::PrideAndPrejudice
 end
