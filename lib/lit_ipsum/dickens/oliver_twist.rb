@@ -2,16 +2,17 @@
 
 module LitIpsum
   class Dickens
+    # Charles Dickens' Oliver Twist
     class OliverTwist < Base
-      FILENAME = File.join(File.dirname(File.expand_path(__FILE__)), '../../texts/dickens/oliver-twist.txt')
+      FILENAME = full_filename('texts/dickens/oliver-twist.txt')
 
       class << self
-        def sentences(count, max_sentence: 0, filename: FILENAME, repeats: nil)
-          super(count, repeats: repeats, max_sentence: max_sentence, filename: filename)
+        def sentences(count, max_sentence: 0, repeats: nil)
+          super(count, repeats: repeats, max_sentence: max_sentence, filename: FILENAME)
         end
 
-        def words(count, filename: FILENAME, repeats: nil)
-          super(count, repeats: repeats, filename: filename)
+        def words(count, repeats: nil)
+          super(count, repeats: repeats, filename: FILENAME)
         end
       end
     end
